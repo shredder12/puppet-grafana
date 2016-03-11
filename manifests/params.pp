@@ -18,5 +18,5 @@ class grafana::params {
   $package_name        = 'grafana'
   $rpm_iteration       = '1'
   $service_name        = 'grafana-server'
-  $version             = '2.5.0'
+  $version             = '2.6.0'
 }
