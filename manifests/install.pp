@@ -23,7 +23,7 @@ class grafana::install {
           }
 
           package { $::grafana::package_name:
-            ensure   => present,
+            ensure   => 'latest',
             provider => 'dpkg',
             source   => $package_file,
             require  => [Wget::Fetch['grafana'],Package['libfontconfig1']]
