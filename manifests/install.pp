@@ -15,15 +15,17 @@ class grafana::install {
             ensure => present
           }
 
+          $package_file = "/tmp/grafana_${::grafana::version}_amd64.deb"
+
           wget::fetch { 'grafana':
             source      => $::grafana::package_source,
-            destination => '/tmp/grafana.deb'
+            destination => $package_file
           }
 
           package { $::grafana::package_name:
             ensure   => present,
             provider => 'dpkg',
-            source   => '/tmp/grafana.deb',
+            source   => $package_file,
             require  => [Wget::Fetch['grafana'],Package['libfontconfig1']]
           }
         }
